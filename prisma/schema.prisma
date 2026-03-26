@@ -1,0 +1,107 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ReservationStatus {
+  CONFIRMED
+  CANCELLED
+}
+
+model Cafe {
+  id                    Int                @id
+  name                  String
+  description           String
+  minConsumptionPerHour Int
+  stationCapacity       Int
+  imageUrl              String
+  address               String
+  amenities             String[]
+
+  availabilitySlots AvailabilitySlot[]
+  reservations      Reservation[]
+}
+
+model AvailabilitySlot {
+  id      String   @id @default(uuid())
+  cafeId  Int
+  date    DateTime
+  time    String
+  enabled Boolean  @default(true)
+
+  cafe Cafe @relation(fields: [cafeId], references: [id], onDelete: Cascade)
+
+  @@index([cafeId, date])
+  @@unique([cafeId, date, time])
+}
+
+model Reservation {
+  id           String            @id @default(uuid())
+  cafeId       Int
+  userId       String?
+  date         DateTime
+  time         String
+  seats        Int
+  customerName String
+  status       ReservationStatus @default(CONFIRMED)
+  createdAt    DateTime          @default(now())
+
+  cafe Cafe @relation(fields: [cafeId], references: [id], onDelete: Cascade)
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([cafeId, date, time])
+  @@index([userId, date, time])
+  @@unique([userId, date, time])
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+
+  accounts Account[]
+  sessions Session[]
+  reservations Reservation[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
