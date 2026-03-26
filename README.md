@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Choosing Your Vibe Coding Tools — Scorecard & Decision
 
-## Getting Started
+This repository contains my course work for the **“Choosing Your Vibe Coding Tools”** assignment.
 
-First, run the development server:
+## Project context
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### What I’m building
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Workhop**: a two-sided MVP to reserve seats/time slots in cafés for work (customer booking flow + café owner availability/reservations).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### What I want Vibe Coding tools for
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Planning and scoping MVP requirements
+- Implementing a full-stack web app (UI + API + database)
+- Debugging and refactoring while keeping code maintainable
 
-## Learn More
+### Constraints
 
-To learn more about Next.js, take a look at the following resources:
+- **Time**: limited (MVP-first)
+- **Budget**: prefer low/zero cost while learning
+- **Stack**: JavaScript/TypeScript + Next.js
+- **Control/Maintainability**: high priority (I want to understand and own the code)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tool Evaluation Scorecard
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Ratings are **1–5 (5 = best aligned with my needs)**.
 
-## Deploy on Vercel
+| Tool | UI/UX | Cost | Speed | Platform Dependency | Control | Maintainability | Code Quality | Reusability | Your Rating for Your Needs (1-5) | Notes/Justification |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| Vercel v0 | 5 | 3 | 5 | 2 | 2 | 1 | 5 | 1 | 3 | Great for fast UI ideation, but lower control and weaker long-term maintainability for a full product. |
+| Replit | 4 | 1 | 4 | 1 | 1 | 3 | 5 | 1 | 2 | Very fast to start, but high platform dependency and less control for a structured Next.js codebase. |
+| Lovable | 5 | 3 | 4 | 2 | 3 | 3 | 4 | 1 | 3 | Good for prototyping; still not my preferred path for full control and maintainability. |
+| Windsurf | 3 | 5 | 3 | 5 | 5 | 5 | 5 | 5 | 5 | Best fit for building a real codebase in my own repo with strong control, maintainability, and reuse. |
+| Cursor | 2 | 4 | 3 | 5 | 4 | 5 | 4 | 5 | 4 | Also strong for repo-based development; I chose Windsurf as my primary tool for this project. |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Decision
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+I chose **Windsurf** as my main Vibe Coding tool.
+
+### Why Windsurf fits this project
+
+- **High control**: works directly in my repo and stack (TypeScript/Next.js)
+- **Maintainability**: encourages incremental changes, reviewable diffs, and consistent structure
+- **Code quality**: better alignment with existing patterns and the ability to refactor safely
+- **Reusability**: changes live in the codebase, not in a tool-specific environment
+
+## Supporting docs
+
+If the instructor expects evidence of the MVP planning work, it is included under:
+
+- `memory-bank/mvp-product-planner.md`
+- `memory-bank/mvp-requirements.md`
+- `memory-bank/prompt-appendix.md`
+
+## Submission
+
+Share the GitHub repository link that contains this `README.md`.
+
+
+
